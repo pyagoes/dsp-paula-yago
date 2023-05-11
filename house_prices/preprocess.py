@@ -6,11 +6,6 @@ import os
 from typing import List, Tuple
 
 
-def reading_csv(file_path: str) -> pd.DataFrame:
-    csv_file = pd.read_csv(file_path)
-    return csv_file
-
-
 def splitting_df(initial_df: pd.DataFrame):
     train_df, test_df = train_test_split(initial_df,
                                          test_size=0.33, random_state=42)
@@ -33,7 +28,7 @@ def preprocessing(data: pd.DataFrame, categorical_columns: List[str],
     data[continuous_columns] = data[continuous_columns].fillna(
         data[continuous_columns].mean())
     # Remove duplicated rows
-    data = data.drop_duplicates(keep='first')
+    # data = data.drop_duplicates(keep='first')
     # Reset index
     preprocess_df = data.reset_index(drop=True)
 
